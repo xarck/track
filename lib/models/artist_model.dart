@@ -50,12 +50,12 @@ class ArtistModel {
 
   factory ArtistModel.fromMap(Map<String, dynamic> map) {
     return ArtistModel(
-      map['streamable'] != null ? map['streamable'] : null,
-      map['mbid'] != null ? map['mbid'] : null,
-      map['url'] != null ? map['url'] : null,
-      map['playcount'] != null ? map['playcount'] : null,
-      map['attr'] != null ? RankAttr.fromMap(map['attr']) : null,
-      map['name'] != null ? map['name'] : null,
+      map['streamable'] ?? '',
+      map['mbid'] ?? '',
+      map['url'] ?? '',
+      map['playcount'] ?? '',
+      map['attr'] ?? '',
+      map['name'] ?? '',
     );
   }
 
