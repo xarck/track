@@ -30,21 +30,11 @@ class _ArtistViewState extends State<ArtistView> {
                     fontSize: 20,
                   ),
                 ),
-                Column(
-                  children: [
-                    Text(
-                      '${items[index].name}',
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
-                    ),
-                    Text(
-                      "${items[index].artist.name}",
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
-                    ),
-                  ],
+                Text(
+                  '${items[index].name}',
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
                 )
               ],
             ),
