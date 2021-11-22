@@ -16,8 +16,6 @@ class _TopLibraryState extends State<TopLibrary> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("Hello world"),
-    );
+    return Text("Hello world");
   }
 }

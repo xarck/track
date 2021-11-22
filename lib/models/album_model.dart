@@ -7,60 +7,6 @@ import 'package:track/models/attr_model.dart';
 
 import 'image_model.dart';
 
-class TopAlbums {
-  final List<AlbumModel> albums;
-  final Attr attr;
-
-  TopAlbums(
-    this.albums,
-    this.attr,
-  );
-
-  TopAlbums copyWith({
-    List<AlbumModel>? albums,
-    Attr? attr,
-  }) {
-    return TopAlbums(
-      albums ?? this.albums,
-      attr ?? this.attr,
-    );
-  }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'albums': albums.map((x) => x.toMap()).toList(),
-      'attr': attr.toMap(),
-    };
-  }
-
-  factory TopAlbums.fromMap(Map<String, dynamic> map) {
-    return TopAlbums(
-      List<AlbumModel>.from(map['albums']?.map((x) => AlbumModel.fromMap(x))),
-      Attr.fromMap(map['attr']),
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory TopAlbums.fromJson(String source) =>
-      TopAlbums.fromMap(json.decode(source));
-
-  @override
-  String toString() => 'TopAlbums(albums: $albums, attr: $attr)';
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is TopAlbums &&
-        listEquals(other.albums, albums) &&
-        other.attr == attr;
-  }
-
-  @override
-  int get hashCode => albums.hashCode ^ attr.hashCode;
-}
-
 class AlbumModel {
   final ArtistModel artist;
   final List<Image> images;

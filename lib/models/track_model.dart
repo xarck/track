@@ -7,60 +7,6 @@ import 'package:track/models/image_model.dart';
 
 import 'attr_model.dart';
 
-class TopTracks {
-  final List<TrackModel> track;
-  final Attr attr;
-
-  TopTracks(
-    this.track,
-    this.attr,
-  );
-
-  TopTracks copyWith({
-    List<TrackModel>? track,
-    Attr? attr,
-  }) {
-    return TopTracks(
-      track ?? this.track,
-      attr ?? this.attr,
-    );
-  }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'track': track.map((x) => x.toMap()).toList(),
-      'attr': attr.toMap(),
-    };
-  }
-
-  factory TopTracks.fromMap(Map<String, dynamic> map) {
-    return TopTracks(
-      List<TrackModel>.from(map['track']?.map((x) => TrackModel.fromMap(x))),
-      Attr.fromMap(map['@attr']),
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory TopTracks.fromJson(String source) =>
-      TopTracks.fromMap(json.decode(source));
-
-  @override
-  String toString() => 'TopTracks(track: $track, attr: $attr)';
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is TopTracks &&
-        listEquals(other.track, track) &&
-        other.attr == attr;
-  }
-
-  @override
-  int get hashCode => track.hashCode ^ attr.hashCode;
-}
-
 class TrackModel {
   final String mbid;
   final String name;

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 class RankAttr {
-  final String rank;
+  String? rank;
 
   RankAttr(
     this.rank,
@@ -21,7 +21,10 @@ class RankAttr {
     };
   }
 
-  factory RankAttr.fromMap(Map<String, dynamic> map) {
+  factory RankAttr.fromMap(Map<String, dynamic>? map) {
+    if (map == null) {
+      return RankAttr('');
+    }
     return RankAttr(
       map['rank'],
     );

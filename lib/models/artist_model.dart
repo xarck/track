@@ -6,60 +6,6 @@ import 'package:track/models/attr_model.dart';
 
 import 'image_model.dart';
 
-class TopArtists {
-  final List<ArtistModel> artist;
-  final Attr attr;
-
-  TopArtists(
-    this.artist,
-    this.attr,
-  );
-
-  TopArtists copyWith({
-    List<ArtistModel>? artist,
-    Attr? attr,
-  }) {
-    return TopArtists(
-      artist ?? this.artist,
-      attr ?? this.attr,
-    );
-  }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'artist': artist.map((x) => x.toMap()).toList(),
-      'attr': attr.toMap(),
-    };
-  }
-
-  factory TopArtists.fromMap(Map<String, dynamic> map) {
-    return TopArtists(
-      List<ArtistModel>.from(map['artist']?.map((x) => ArtistModel.fromMap(x))),
-      Attr.fromMap(map['@attr']),
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory TopArtists.fromJson(String source) =>
-      TopArtists.fromMap(json.decode(source));
-
-  @override
-  String toString() => 'TopArtists(artist: $artist, attr: $attr)';
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is TopArtists &&
-        listEquals(other.artist, artist) &&
-        other.attr == attr;
-  }
-
-  @override
-  int get hashCode => artist.hashCode ^ attr.hashCode;
-}
-
 class ArtistModel {
   String? streamable;
   List<Image>? image;
@@ -114,7 +60,7 @@ class ArtistModel {
   factory ArtistModel.fromMap(Map<String, dynamic> map) {
     return ArtistModel(
       map['streamable'],
-      List<Image>.from(map['image']?.map((x) => Image.fromMap(x))),
+      List<Image>.from([]),
       map['mbid'],
       map['url'],
       map['playcount'],
