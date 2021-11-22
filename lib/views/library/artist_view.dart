@@ -11,10 +11,10 @@ class ArtistView extends StatefulWidget {
 }
 
 class _ArtistViewState extends State<ArtistView> {
-  final HomeController homeController = Get.find<HomeController>();
+  final LibraryController libraryController = Get.find<LibraryController>();
   @override
   Widget build(BuildContext context) {
-    List items = homeController.topArtists;
+    List items = libraryController.topArtists;
 
     return ListView.builder(
       itemCount: items.length,

@@ -10,10 +10,10 @@ class AlbumView extends StatefulWidget {
 }
 
 class _AlbumViewState extends State<AlbumView> {
-  final HomeController homeController = Get.find<HomeController>();
+  final LibraryController libraryController = Get.find<LibraryController>();
   @override
   Widget build(BuildContext context) {
-    List items = homeController.topAlbums;
+    List items = libraryController.topAlbums;
 
     return ListView.builder(
       itemCount: items.length,

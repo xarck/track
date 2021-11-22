@@ -13,12 +13,12 @@ class Library extends StatefulWidget {
 }
 
 class _LibraryState extends State<Library> with SingleTickerProviderStateMixin {
-  final homeController = Get.put(HomeController());
+  final libraryController = Get.put(LibraryController());
   TabController? _tabController;
   @override
   void initState() {
     super.initState();
-    homeController.fetchUserdata('iamashking123');
+    libraryController.fetchUserdata('iamashking123');
     _tabController = TabController(length: 3, vsync: this);
   }
 
@@ -39,15 +39,13 @@ class _LibraryState extends State<Library> with SingleTickerProviderStateMixin {
             ],
           ),
         ),
-        body: GetBuilder<HomeController>(
-          builder: (homeController) => TabBarView(
-            controller: _tabController,
-            children: const [
-              TrackView(),
-              AlbumView(),
-              ArtistView(),
-            ],
-          ),
+        body: TabBarView(
+          controller: _tabController,
+          children: const [
+            TrackView(),
+            AlbumView(),
+            ArtistView(),
+          ],
         ),
       ),
     );

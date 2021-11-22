@@ -6,10 +6,14 @@ import 'package:track/models/album_model.dart';
 import 'package:track/models/artist_model.dart';
 import 'package:track/models/track_model.dart';
 
-class HomeController extends GetxController {
+class LibraryController extends GetxController {
   List<TrackModel> topTracks = <TrackModel>[].obs;
   List<AlbumModel> topAlbums = <AlbumModel>[].obs;
   List<ArtistModel> topArtists = <ArtistModel>[].obs;
+
+  // Home Data Members
+  List<TrackModel> recentTracks = <TrackModel>[].obs;
+
   void fetchUserdata(username) async {
     var artistResponse = await http.get(Uri.parse(
         'http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=$username&api_key=36b538790ba372126b3fc9447f1120c3&format=json'));
@@ -34,6 +38,17 @@ class HomeController extends GetxController {
     var artists = json.decode(artistResponse.body)['topartists']['artist'];
     artists.forEach((artist) {
       topArtists.add(ArtistModel.fromMap(artist));
+    });
+    update();
+  }
+
+  // Home Member Functions
+  fetchRecentTracks(username) async {
+    var recentTrackResponse = await http.get(Uri.parse(
+        'http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=$username&api_key=36b538790ba372126b3fc9447f1120c3&format=json'));
+    var tracks = json.decode(recentTrackResponse.body)['recenttracks']['track'];
+    tracks.forEach((track) {
+      recentTracks.add(TrackModel.fromMap(track));
     });
     update();
   }

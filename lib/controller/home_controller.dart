@@ -4,7 +4,7 @@ import 'package:track/models/track_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class HomeController extends GetxController {
+class LibraryController extends GetxController {
   List<TrackModel> recentTracks = <TrackModel>[].obs;
   fetchRecentTracks(username) async {
     var recentTrackResponse = await http.get(Uri.parse(

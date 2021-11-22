@@ -11,10 +11,10 @@ class TrackView extends StatefulWidget {
 }
 
 class _TrackViewState extends State<TrackView> {
-  final HomeController homeController = Get.find<HomeController>();
+  final LibraryController libraryController = Get.find<LibraryController>();
   @override
   Widget build(BuildContext context) {
-    List items = homeController.topTracks;
+    List items = libraryController.topTracks;
 
     return ListView.builder(
       itemCount: items.length,

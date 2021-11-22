@@ -70,9 +70,9 @@ class TrackModel {
       List<Image>.from(map['image']?.map((x) => Image.fromMap(x))),
       ArtistModel.fromMap(map['artist']),
       map['url'],
-      map['duration'],
+      map['duration'] ?? '',
       RankAttr.fromMap(map['attr']),
-      map['playcount'],
+      map['playcount'] ?? '',
     );
   }
 
