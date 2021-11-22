@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:track/controller/home_controller.dart';
-import 'package:track/views/top_library.dart';
+import 'package:track/views/library/album_view.dart';
+import 'package:track/views/library/artist_view.dart';
+import 'package:track/views/library/track_view.dart';
 
 class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
@@ -41,9 +43,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           builder: (homeController) => TabBarView(
             controller: _tabController,
             children: [
-              TopLibrary(type: "Tracks", data: homeController.topTracks),
-              TopLibrary(type: "Albums", data: homeController.topAlbums),
-              TopLibrary(type: "Artists", data: homeController.topArtists),
+              TrackView(),
+              AlbumView(),
+              ArtistView(),
             ],
           ),
         ),

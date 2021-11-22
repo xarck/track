@@ -35,5 +35,6 @@ class HomeController extends GetxController {
     artists.forEach((artist) {
       topArtists.add(ArtistModel.fromMap(artist));
     });
+    update();
   }
 }
