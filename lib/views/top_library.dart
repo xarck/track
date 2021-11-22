@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:getxfire/getxfire.dart';
+import 'package:get/get.dart';
 import 'package:track/controller/home_controller.dart';
 
 class TopLibrary extends StatefulWidget {
@@ -16,17 +16,8 @@ class _TopLibraryState extends State<TopLibrary> {
 
   @override
   Widget build(BuildContext context) {
-    return GetX<HomeController>(
-      builder: (homeController) {
-        print(homeController.topTracks);
-        return Container(
-          child: homeController.topTracks.isNotEmpty
-              ? Text("Day")
-              : Text(
-                  "Hey",
-                ),
-        );
-      },
+    return Container(
+      child: Text("Hello world"),
     );
   }
 }
