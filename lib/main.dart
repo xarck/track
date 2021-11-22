@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:track/views/dashboard.dart';
-import 'package:track/views/home.dart';
 
 void main() {
   runApp(const MyApp());

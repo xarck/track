@@ -4,7 +4,7 @@ import 'package:track/views/home.dart';
 import 'package:track/views/library.dart';
 
 class Dashboard extends StatefulWidget {
-  Dashboard({Key? key}) : super(key: key);
+  const Dashboard({Key? key}) : super(key: key);
 
   @override
   _DashboardState createState() => _DashboardState();
@@ -12,7 +12,10 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   int _selectedIndex = 0;
-  List<Widget> _widgetOptions = [Home(), Library()];
+  final List<Widget> _widgetOptions = [
+    Home(),
+    Library(),
+  ];
   _onItemTapped(index) {
     setState(() {
       _selectedIndex = index;
@@ -23,7 +26,7 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: Container(
+      body: SizedBox(
         height: getSize(context).height,
         width: getSize(context).width,
         child: Center(
@@ -34,7 +37,7 @@ class _DashboardState extends State<Dashboard> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: [
+        items: const [
           BottomNavigationBarItem(label: "Home", icon: Icon(Icons.home)),
           BottomNavigationBarItem(
               label: "Library", icon: Icon(Icons.library_music))

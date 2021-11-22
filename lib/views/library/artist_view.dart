@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:track/controller/library_controller.dart';
 
 class ArtistView extends StatefulWidget {
+  const ArtistView({Key? key}) : super(key: key);
+
   @override
   _ArtistViewState createState() => _ArtistViewState();
 }
@@ -22,21 +24,13 @@ class _ArtistViewState extends State<ArtistView> {
           margin: EdgeInsets.only(bottom: 5),
           child: Align(
             alignment: Alignment.centerLeft,
-            child: Row(
-              children: [
-                Text(
-                  '#${index + 1} ',
-                  style: TextStyle(
-                    fontSize: 20,
-                  ),
+            child: ListTile(
+              title: Text(
+                '#${index + 1} ${items[index].name}',
+                style: TextStyle(
+                  fontSize: 20,
                 ),
-                Text(
-                  '${items[index].name}',
-                  style: TextStyle(
-                    fontSize: 20,
-                  ),
-                )
-              ],
+              ),
             ),
           ),
         );

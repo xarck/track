@@ -6,7 +6,7 @@ import 'package:track/views/library/artist_view.dart';
 import 'package:track/views/library/track_view.dart';
 
 class Library extends StatefulWidget {
-  Library({Key? key}) : super(key: key);
+  const Library({Key? key}) : super(key: key);
 
   @override
   _LibraryState createState() => _LibraryState();
@@ -32,7 +32,7 @@ class _LibraryState extends State<Library> with SingleTickerProviderStateMixin {
           centerTitle: true,
           bottom: TabBar(
             controller: _tabController,
-            tabs: [
+            tabs: const [
               Tab(text: "Tracks"),
               Tab(text: "Albums"),
               Tab(text: "Artists")
@@ -42,7 +42,7 @@ class _LibraryState extends State<Library> with SingleTickerProviderStateMixin {
         body: GetBuilder<HomeController>(
           builder: (homeController) => TabBarView(
             controller: _tabController,
-            children: [
+            children: const [
               TrackView(),
               AlbumView(),
               ArtistView(),

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:track/controller/library_controller.dart';
 
 class AlbumView extends StatefulWidget {
+  const AlbumView({Key? key}) : super(key: key);
   @override
   _AlbumViewState createState() => _AlbumViewState();
 }
