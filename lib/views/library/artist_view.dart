@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:track/controller/home_controller.dart';
+import 'package:track/controller/library_controller.dart';
 
 class ArtistView extends StatefulWidget {
   @override

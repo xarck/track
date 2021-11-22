@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:track/views/dashboard.dart';
 import 'package:track/views/home.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.black,
       ),
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      home: Dashboard(),
     );
   }
 }
