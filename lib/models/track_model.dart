@@ -1,16 +1,12 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
-
 import 'package:track/models/artist_model.dart';
-import 'package:track/models/image_model.dart';
 
 import 'attr_model.dart';
 
 class TrackModel {
   final String mbid;
   final String name;
-  final List<Image> image;
   final ArtistModel artist;
   final String url;
   final String duration;
@@ -20,7 +16,6 @@ class TrackModel {
   TrackModel(
     this.mbid,
     this.name,
-    this.image,
     this.artist,
     this.url,
     this.duration,
@@ -31,7 +26,6 @@ class TrackModel {
   TrackModel copyWith({
     String? mbid,
     String? name,
-    List<Image>? image,
     ArtistModel? artist,
     String? url,
     String? duration,
@@ -41,7 +35,6 @@ class TrackModel {
     return TrackModel(
       mbid ?? this.mbid,
       name ?? this.name,
-      image ?? this.image,
       artist ?? this.artist,
       url ?? this.url,
       duration ?? this.duration,
@@ -54,7 +47,6 @@ class TrackModel {
     return {
       'mbid': mbid,
       'name': name,
-      'image': image.map((x) => x.toMap()).toList(),
       'artist': artist.toMap(),
       'url': url,
       'duration': duration,
@@ -67,7 +59,6 @@ class TrackModel {
     return TrackModel(
       map['mbid'],
       map['name'],
-      List<Image>.from(map['image']?.map((x) => Image.fromMap(x))),
       ArtistModel.fromMap(map['artist']),
       map['url'],
       map['duration'] ?? '',
@@ -83,7 +74,7 @@ class TrackModel {
 
   @override
   String toString() {
-    return 'TrackModel(mbid: $mbid, name: $name, image: $image, artist: $artist, url: $url, duration: $duration, attr: $attr, playcount: $playcount)';
+    return 'TrackModel(mbid: $mbid, name: $name, artist: $artist, url: $url, duration: $duration, attr: $attr, playcount: $playcount)';
   }
 
   @override
@@ -93,7 +84,6 @@ class TrackModel {
     return other is TrackModel &&
         other.mbid == mbid &&
         other.name == name &&
-        listEquals(other.image, image) &&
         other.artist == artist &&
         other.url == url &&
         other.duration == duration &&
@@ -105,7 +95,6 @@ class TrackModel {
   int get hashCode {
     return mbid.hashCode ^
         name.hashCode ^
-        image.hashCode ^
         artist.hashCode ^
         url.hashCode ^
         duration.hashCode ^

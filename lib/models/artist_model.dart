@@ -1,14 +1,9 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
-
 import 'package:track/models/attr_model.dart';
-
-import 'image_model.dart';
 
 class ArtistModel {
   String? streamable;
-  List<Image>? image;
   String? mbid;
   String? url;
   String? playcount;
@@ -17,7 +12,6 @@ class ArtistModel {
 
   ArtistModel(
     this.streamable,
-    this.image,
     this.mbid,
     this.url,
     this.playcount,
@@ -27,7 +21,6 @@ class ArtistModel {
 
   ArtistModel copyWith({
     String? streamable,
-    List<Image>? image,
     String? mbid,
     String? url,
     String? playcount,
@@ -36,7 +29,6 @@ class ArtistModel {
   }) {
     return ArtistModel(
       streamable ?? this.streamable,
-      image ?? this.image,
       mbid ?? this.mbid,
       url ?? this.url,
       playcount ?? this.playcount,
@@ -48,7 +40,6 @@ class ArtistModel {
   Map<String, dynamic> toMap() {
     return {
       'streamable': streamable,
-      'image': image?.map((x) => x.toMap()).toList(),
       'mbid': mbid,
       'url': url,
       'playcount': playcount,
@@ -59,13 +50,12 @@ class ArtistModel {
 
   factory ArtistModel.fromMap(Map<String, dynamic> map) {
     return ArtistModel(
-      map['streamable'],
-      List<Image>.from([]),
-      map['mbid'],
-      map['url'],
-      map['playcount'],
-      RankAttr.fromMap(map['@attr']),
-      map['name'],
+      map['streamable'] != null ? map['streamable'] : null,
+      map['mbid'] != null ? map['mbid'] : null,
+      map['url'] != null ? map['url'] : null,
+      map['playcount'] != null ? map['playcount'] : null,
+      map['attr'] != null ? RankAttr.fromMap(map['attr']) : null,
+      map['name'] != null ? map['name'] : null,
     );
   }
 
@@ -76,7 +66,7 @@ class ArtistModel {
 
   @override
   String toString() {
-    return 'ArtistModel(streamable: $streamable, image: $image, mbid: $mbid, url: $url, playcount: $playcount, attr: $attr, name: $name)';
+    return 'ArtistModel(streamable: $streamable, mbid: $mbid, url: $url, playcount: $playcount, attr: $attr, name: $name)';
   }
 
   @override
@@ -85,7 +75,6 @@ class ArtistModel {
 
     return other is ArtistModel &&
         other.streamable == streamable &&
-        listEquals(other.image, image) &&
         other.mbid == mbid &&
         other.url == url &&
         other.playcount == playcount &&
@@ -96,7 +85,6 @@ class ArtistModel {
   @override
   int get hashCode {
     return streamable.hashCode ^
-        image.hashCode ^
         mbid.hashCode ^
         url.hashCode ^
         playcount.hashCode ^
