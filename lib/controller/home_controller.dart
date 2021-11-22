@@ -17,11 +17,23 @@ class HomeController extends GetxController {
         'http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=$username&api_key=36b538790ba372126b3fc9447f1120c3&format=json'));
     var trackResponse = await http.get(Uri.parse(
         'http://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=$username&api_key=36b538790ba372126b3fc9447f1120c3&format=json'));
-    print(json.decode(trackResponse.body)['toptracks']['track']);
-    json.decode(trackResponse.body)['toptracks']['track'].map((track) {
+
+    //Retrieving Tracks
+    var tracks = json.decode(trackResponse.body)['toptracks']['track'];
+    tracks.forEach((track) {
       topTracks.add(TrackModel.fromMap(track));
-      print('2');
     });
-    print(topTracks.length);
+
+    //Retrieving Albums
+    var albums = json.decode(albumResponse.body)['topalbums']['album'];
+    albums.forEach((album) {
+      topAlbums.add(AlbumModel.fromMap(album));
+    });
+
+    // Retrieving Artists
+    var artists = json.decode(artistResponse.body)['topartists']['artist'];
+    artists.forEach((artist) {
+      topArtists.add(ArtistModel.fromMap(artist));
+    });
   }
 }
