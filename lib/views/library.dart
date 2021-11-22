@@ -29,7 +29,6 @@ class _LibraryState extends State<Library> with SingleTickerProviderStateMixin {
       child: Scaffold(
         appBar: AppBar(
           title: Text("Library"),
-          centerTitle: true,
           bottom: TabBar(
             controller: _tabController,
             tabs: const [

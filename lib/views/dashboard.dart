@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:track/utils/dimension.dart';
+import 'package:track/views/chart_view.dart';
 import 'package:track/views/home.dart';
 import 'package:track/views/library.dart';
 
@@ -14,6 +15,7 @@ class _DashboardState extends State<Dashboard> {
   int _selectedIndex = 0;
   final List<Widget> _widgetOptions = [
     Home(),
+    ChartView(),
     Library(),
   ];
   _onItemTapped(index) {
@@ -39,6 +41,7 @@ class _DashboardState extends State<Dashboard> {
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(label: "Home", icon: Icon(Icons.home)),
+          BottomNavigationBarItem(label: "Chart", icon: Icon(Icons.show_chart)),
           BottomNavigationBarItem(
               label: "Library", icon: Icon(Icons.library_music))
         ],

@@ -54,7 +54,7 @@ class ArtistModel {
       map['mbid'] ?? '',
       map['url'] ?? '',
       map['playcount'] ?? '',
-      map['attr'] ?? '',
+      map['attr'],
       map['name'] ?? '',
     );
   }
