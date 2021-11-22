@@ -9,16 +9,16 @@ import 'image_model.dart';
 
 class AlbumModel {
   final ArtistModel artist;
-  final List<Image> images;
+  final List<Image> image;
   final String mbid;
   final String url;
-  final int playcount;
+  final String playcount;
   final RankAttr attr;
   final String name;
 
   AlbumModel(
     this.artist,
-    this.images,
+    this.image,
     this.mbid,
     this.url,
     this.playcount,
@@ -28,16 +28,16 @@ class AlbumModel {
 
   AlbumModel copyWith({
     ArtistModel? artist,
-    List<Image>? images,
+    List<Image>? image,
     String? mbid,
     String? url,
-    int? playcount,
+    String? playcount,
     RankAttr? attr,
     String? name,
   }) {
     return AlbumModel(
       artist ?? this.artist,
-      images ?? this.images,
+      image ?? this.image,
       mbid ?? this.mbid,
       url ?? this.url,
       playcount ?? this.playcount,
@@ -49,7 +49,7 @@ class AlbumModel {
   Map<String, dynamic> toMap() {
     return {
       'artist': artist.toMap(),
-      'images': images.map((x) => x.toMap()).toList(),
+      'image': image.map((x) => x.toMap()).toList(),
       'mbid': mbid,
       'url': url,
       'playcount': playcount,
@@ -61,7 +61,7 @@ class AlbumModel {
   factory AlbumModel.fromMap(Map<String, dynamic> map) {
     return AlbumModel(
       ArtistModel.fromMap(map['artist']),
-      List<Image>.from(map['images']?.map((x) => Image.fromMap(x))),
+      List<Image>.from(map['image']?.map((x) => Image.fromMap(x))),
       map['mbid'],
       map['url'],
       map['playcount'],
@@ -77,7 +77,7 @@ class AlbumModel {
 
   @override
   String toString() {
-    return 'AlbumModel(artist: $artist, images: $images, mbid: $mbid, url: $url, playcount: $playcount, attr: $attr, name: $name)';
+    return 'AlbumModel(artist: $artist, image: $image, mbid: $mbid, url: $url, playcount: $playcount, attr: $attr, name: $name)';
   }
 
   @override
@@ -86,7 +86,7 @@ class AlbumModel {
 
     return other is AlbumModel &&
         other.artist == artist &&
-        listEquals(other.images, images) &&
+        listEquals(other.image, image) &&
         other.mbid == mbid &&
         other.url == url &&
         other.playcount == playcount &&
@@ -97,7 +97,7 @@ class AlbumModel {
   @override
   int get hashCode {
     return artist.hashCode ^
-        images.hashCode ^
+        image.hashCode ^
         mbid.hashCode ^
         url.hashCode ^
         playcount.hashCode ^
