@@ -29,6 +29,14 @@ class _LibraryState extends State<Library> with SingleTickerProviderStateMixin {
       child: Scaffold(
         appBar: AppBar(
           title: Text("Library"),
+          actions: [
+            IconButton(
+              onPressed: () {
+                libraryController.fetchUserdata('iamashking123');
+              },
+              icon: Icon(Icons.refresh),
+            )
+          ],
           bottom: TabBar(
             controller: _tabController,
             tabs: const [

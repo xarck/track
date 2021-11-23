@@ -21,7 +21,9 @@ class LibraryController extends GetxController {
         'http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=$username&api_key=36b538790ba372126b3fc9447f1120c3&format=json'));
     var trackResponse = await http.get(Uri.parse(
         'http://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=$username&api_key=36b538790ba372126b3fc9447f1120c3&format=json'));
-
+    topAlbums = [];
+    topTracks = [];
+    topArtists = [];
     //Retrieving Tracks
     var tracks = json.decode(trackResponse.body)['toptracks']['track'];
     tracks.forEach((track) {
@@ -46,6 +48,7 @@ class LibraryController extends GetxController {
   fetchRecentTracks(username) async {
     var recentTrackResponse = await http.get(Uri.parse(
         'http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=$username&api_key=36b538790ba372126b3fc9447f1120c3&format=json'));
+    recentTracks = [];
     var tracks = json.decode(recentTrackResponse.body)['recenttracks']['track'];
     tracks.forEach((track) {
       recentTracks.add(TrackModel.fromMap(track));

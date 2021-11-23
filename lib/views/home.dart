@@ -22,6 +22,14 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Home"),
+        actions: [
+          IconButton(
+            onPressed: () {
+              libraryController.fetchRecentTracks('iamashking123');
+            },
+            icon: Icon(Icons.refresh),
+          )
+        ],
       ),
       body: GetBuilder<LibraryController>(
         builder: (libraryController) {
