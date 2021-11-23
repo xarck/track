@@ -15,6 +15,7 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     libraryController.fetchRecentTracks('iamashking123');
+    libraryController.fetchUserWeeklydata('iamashking123');
   }
 
   @override
