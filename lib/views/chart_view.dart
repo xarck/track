@@ -38,12 +38,16 @@ class _ChartViewState extends State<ChartView> {
         builder: (chartController) {
           return Stack(
             children: [
-              ListView.builder(
-                itemCount: items.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                      title: Text("#${index + 1}  ${items[index].name}"));
-                },
+              Container(
+                margin: EdgeInsets.only(bottom: 30),
+                child: ListView.builder(
+                  itemCount: items.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text("#${index + 1}  ${items[index].name}"),
+                    );
+                  },
+                ),
               ),
               Align(
                 alignment: Alignment.bottomCenter,

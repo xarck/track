@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:track/controller/library_controller.dart';
+import 'package:track/utils/basic.dart';
+import 'package:track/utils/dimension.dart';
 
 class TrackView extends StatefulWidget {
   const TrackView({Key? key}) : super(key: key);
@@ -21,39 +23,30 @@ class _TrackViewState extends State<TrackView> {
       itemBuilder: (context, index) {
         return Container(
           padding: EdgeInsets.all(10),
-          margin: EdgeInsets.only(bottom: 5),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: ListTile(
-              title: Row(
-                children: [
-                  Text(
-                    '#${index + 1} ',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                  SizedBox(width: 20),
-                  Column(
+          child: ListTile(
+            title: Row(
+              children: [
+                Text(
+                  '#${index + 1} ',
+                ),
+                SizedBox(width: 20),
+                SizedBox(
+                  width: getSize(context).width / 1.8,
+                  child: Column(
                     children: [
-                      Text(
-                        '${items[index].name}',
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
+                      title(
+                        text: '${items[index].name}',
+                        limit: 20,
                       ),
-                      Text(
-                        "${items[index].artist.name}",
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
+                      title(
+                        text: "${items[index].artist.name}",
                       ),
                     ],
                   ),
-                  Spacer(),
-                  Text(items[index].playcount),
-                ],
-              ),
+                ),
+                Spacer(),
+                Text(items[index].playcount),
+              ],
             ),
           ),
         );

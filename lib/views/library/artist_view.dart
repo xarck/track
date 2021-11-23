@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:track/controller/library_controller.dart';
+import 'package:track/utils/basic.dart';
 
 class ArtistView extends StatefulWidget {
   const ArtistView({Key? key}) : super(key: key);
@@ -21,16 +22,15 @@ class _ArtistViewState extends State<ArtistView> {
       itemBuilder: (context, index) {
         return Container(
           padding: EdgeInsets.all(10),
-          margin: EdgeInsets.only(bottom: 5),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: ListTile(
-              title: Text(
-                '#${index + 1} ${items[index].name}',
-                style: TextStyle(
-                  fontSize: 20,
+          child: ListTile(
+            title: Row(
+              children: [
+                title(
+                  text: '#${index + 1}   ${items[index].name}',
                 ),
-              ),
+                Spacer(),
+                Text(items[index].playcount),
+              ],
             ),
           ),
         );

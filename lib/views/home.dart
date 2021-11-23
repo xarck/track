@@ -26,14 +26,16 @@ class _HomeState extends State<Home> {
       body: GetBuilder<LibraryController>(
         builder: (libraryController) {
           List recentTracks = libraryController.recentTracks;
-          return ListView.builder(
-            itemCount: recentTracks.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                title: Text(recentTracks[index].name),
-              );
-            },
-          );
+          return recentTracks.isEmpty
+              ? Center(child: CircularProgressIndicator())
+              : ListView.builder(
+                  itemCount: recentTracks.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(recentTracks[index].name),
+                    );
+                  },
+                );
         },
       ),
     );
