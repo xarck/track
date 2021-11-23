@@ -17,43 +17,45 @@ class _AlbumViewState extends State<AlbumView> {
   Widget build(BuildContext context) {
     List items = libraryController.topAlbums;
 
-    return ListView.builder(
-      itemCount: items.length,
-      itemBuilder: (context, index) {
-        return Container(
-          padding: EdgeInsets.all(10),
-          child: ListTile(
-            title: Row(
-              children: [
-                Text(
-                  '#${index + 1} ',
-                  style: TextStyle(
-                    fontSize: 20,
-                  ),
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                SizedBox(
-                  width: getSize(context).width / 1.8,
-                  child: Column(
+    return items.isEmpty
+        ? Center(child: CircularProgressIndicator())
+        : ListView.builder(
+            itemCount: items.length,
+            itemBuilder: (context, index) {
+              return Container(
+                padding: EdgeInsets.all(10),
+                child: ListTile(
+                  title: Row(
                     children: [
-                      title(
-                        text: '${items[index].name}',
+                      Text(
+                        '#${index + 1} ',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
                       ),
-                      title(
-                        text: "${items[index].artist.name}",
+                      SizedBox(
+                        width: 20,
                       ),
+                      SizedBox(
+                        width: getSize(context).width / 1.8,
+                        child: Column(
+                          children: [
+                            title(
+                              text: '${items[index].name}',
+                            ),
+                            title(
+                              text: "${items[index].artist.name}",
+                            ),
+                          ],
+                        ),
+                      ),
+                      Spacer(),
+                      Text(items[index].playcount),
                     ],
                   ),
                 ),
-                Spacer(),
-                Text(items[index].playcount),
-              ],
-            ),
-          ),
-        );
-      },
-    );
+              );
+            },
+          );
   }
 }

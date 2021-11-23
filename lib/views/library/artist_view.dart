@@ -17,24 +17,28 @@ class _ArtistViewState extends State<ArtistView> {
   Widget build(BuildContext context) {
     List items = libraryController.topArtists;
 
-    return ListView.builder(
-      itemCount: items.length,
-      itemBuilder: (context, index) {
-        return Container(
-          padding: EdgeInsets.all(10),
-          child: ListTile(
-            title: Row(
-              children: [
-                title(
-                  text: '#${index + 1}   ${items[index].name}',
+    return items.isEmpty
+        ? Center(
+            child: CircularProgressIndicator(),
+          )
+        : ListView.builder(
+            itemCount: items.length,
+            itemBuilder: (context, index) {
+              return Container(
+                padding: EdgeInsets.all(10),
+                child: ListTile(
+                  title: Row(
+                    children: [
+                      title(
+                        text: '#${index + 1}   ${items[index].name}',
+                      ),
+                      Spacer(),
+                      Text(items[index].playcount),
+                    ],
+                  ),
                 ),
-                Spacer(),
-                Text(items[index].playcount),
-              ],
-            ),
-          ),
-        );
-      },
-    );
+              );
+            },
+          );
   }
 }
